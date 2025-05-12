@@ -69,3 +69,60 @@ pipenv install langchain wikipedia langchain-community langchain-google-genai py
 ```
 
 This is a based on: https://www.youtube.com/watch?v=bTMPwUgLZf0
+
+## 2️⃣ Logistic AI Agent
+
+This Python script implements an AI agent designed to assist with logistics-related tasks, specifically shipment tracking and rescheduling.
+
+### Run
+
+```
+python ./logistic_ai_agent.py
+```
+
+### Tools
+
+The agent has access to the following tools:
+
+- `track_shipment`: Retrieves the current status and location of a shipment.
+- `check_reschedule_availability`: Checks if a shipment can be rescheduled.
+- `get_reschedule_dates`: Gets the available dates for rescheduling a shipment.
+- `confirm_reschedule`: Confirms the rescheduling of a shipment.
+
+### Sample
+
+```
+AI 🤖: Hello 👋! How can I help you with your shipment 📦 today?
+
+User ➡️: I want to track my parcel
+AI 🤖: Could you please provide the tracking number? It should be in the format AWB-XXXXX.
+
+User ➡️: WB-12345
+AI 🤖: I am sorry, but the tracking number should start with "AWB-". Could you please provide the correct tracking number?
+
+User ➡️: Track AWB-12345
+-- logger: Calling mock_track_shipment with tracking_number: AWB-12345
+-- logger: mock_track_shipment result: Your shipment AWB-AWB-12345 is currently 'En Route' in 'Kuala Lumpur'.
+AI 🤖: Your shipment AWB-12345 is currently 'En Route' in 'Kuala Lumpur'.
+
+User ➡️: Can I reschedule it?
+-- logger: Calling mock_check_reschedule_availability with tracking_number: AWB-12345
+-- logger: mock_check_reschedule_availability result: Yes, you can reschedule this shipment. Please provide the new date (YYYY-MM-DD) and destination postal code.
+AI 🤖: Yes, you can reschedule this shipment. Please provide the new date (YYYY-MM-DD) and destination postal code.
+
+User ➡️: Ok, reschedule it to 2025-05-15.
+AI 🤖: I will need the postal code to reschedule your shipment. Could you please provide it?
+
+User ➡️: Postcode 56000.
+-- logger: Calling mock_confirm_reschedule with tracking_number: AWB-12345, new_date: 2025-05-15, postal_code: 56000
+-- logger: mock_confirm_reschedule result: Okay, I've rescheduled your shipment AWB-AWB-12345 to 2025-05-15 for delivery to postal code 56000.
+AI 🤖: Okay, I've rescheduled your shipment AWB-12345 to 2025-05-15 for delivery to postal code 56000.
+```
+
+### Technical Details
+
+- **LLM:** The agent uses the `ChatGoogleGenerativeAI` model.
+- **Prompt Engineering:** The agent uses a carefully designed prompt to guide the LLM's behavior and ensure it provides accurate and helpful responses.
+- **Mock API:** The script includes mock functions to simulate interactions with external APIs for tracking and rescheduling.
+- **Error Handling:** The script includes error handling to catch exceptions during agent execution and provide informative error messages to the user.
+- **Logging:** The script uses the `logging` module to log important information and debugging messages.
