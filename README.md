@@ -70,7 +70,7 @@ pipenv install langchain wikipedia langchain-community langchain-google-genai py
 
 This is a based on: https://www.youtube.com/watch?v=bTMPwUgLZf0
 
-## 2️⃣ Logistic AI Agent
+## 3️⃣ Logistic AI Agent
 
 This Python script implements an AI agent designed to assist with logistics-related tasks, specifically shipment tracking and rescheduling.
 
