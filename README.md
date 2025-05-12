@@ -126,3 +126,24 @@ AI 🤖: Okay, I've rescheduled your shipment AWB-12345 to 2025-05-15 for delive
 - **Mock API:** The script includes mock functions to simulate interactions with external APIs for tracking and rescheduling.
 - **Error Handling:** The script includes error handling to catch exceptions during agent execution and provide informative error messages to the user.
 - **Logging:** The script uses the `logging` module to log important information and debugging messages.
+
+### Mocking Info
+
+```
+MOCK_TRACKING_DATA = {
+    "AWB-12345": {"status": "En Route", "location": "Kuala Lumpur"},
+    "AWB-67890": {"status": "Delivered", "location": "Ampang Jaya"},
+    "AWB-12341": {"status": "En Route", "location": "Petaling Jaya"}
+}
+MOCK_RESCHEDULE_ALLOWED = {
+    "AWB-12345": True,
+    "AWB-67890": False,
+    "AWB-12341": False
+}
+MOCK_RESCHEDULE_DATES = {
+    "AWB-12345": ["2025-05-15", "2025-05-16", "2025-05-17"],
+}
+MOCK_RESCHEDULE_CONFIRMATION = {
+    "AWB-12345": {"original_date": "2025-05-12", "new_date": "", "status": "Pending Reschedule"},
+}
+```
